@@ -40,11 +40,9 @@ npm run start
 
 ### 🧪 **Engineering** <a name="engineering"></a>
 
-**_Why a functional approach & static build?_** <a name="jsbuild"></a>
+**_Why React?_** <a name="jsbuild"></a>
 
 Truthfully, while I considered using `next.js` or additional react libraries to build this application. I decided against more complex frameworks/dependencies because I wanted to build a bare bones prototype that would accurately reflect my approach and thought process regarding this sort of application without significant usage of dependencies.
-
-While there were some concerns regarding the potential size for the necessary javascript for this application, I thought a functional approach would allow for a centralized source of logic, making review easier and the application functionality more explicit than splitting logic into separate components.
 
 **_Why Sass?_** <a name="sass"></a>
 
