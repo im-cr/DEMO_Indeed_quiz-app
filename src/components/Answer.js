@@ -26,7 +26,7 @@ const Answer = ({
     multiArr.push(txt);
     let aArr = multiArr.sort().join(",");
     let cArr = rightAnswer;
-    let equalArr = (a, b) => JSON.stringify(a) == JSON.stringify(b);
+    let equalArr = (a, b) => JSON.stringify(a) === JSON.stringify(b);
 
     if (multiArr.length >= 2 || equalArr(aArr, cArr)) {
       handleSelect(aArr);

@@ -11,7 +11,7 @@ const Quiz = () => {
   const quizClass = quizState.showResults ? "results" : "quiz";
 
   return (
-    <>
+    <React.Fragment>
       <div className={`container container--${quizClass}`}>
         <AppLogo style={{ marginBottom: "2rem" }} />
         {!quizState.showResults ? (
@@ -34,7 +34,7 @@ const Quiz = () => {
           />
         )}
       </div>
-    </>
+    </React.Fragment>
   );
 };
 
