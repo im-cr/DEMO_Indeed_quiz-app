@@ -1,0 +1,19 @@
+.title {
+  position: relative;
+  margin: 0;
+  text-align: left;
+  &--progress {
+    span {
+      position: absolute;
+      right: 0;
+    }
+  }
+  &--question {
+    margin-bottom: 2rem;
+    line-height: $line-height-base;
+  }
+  &--results {
+    margin: 2rem 0 1rem;
+    text-align: center;
+  }
+}

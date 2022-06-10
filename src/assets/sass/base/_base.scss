@@ -1,0 +1,14 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: $bg-white;
+  color: $txt-blk;
+}
+.app {
+  &--container {
+    text-align: center;
+  }
+}

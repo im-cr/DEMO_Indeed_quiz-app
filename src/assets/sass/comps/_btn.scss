@@ -1,0 +1,25 @@
+.btn {
+  display: block;
+  max-width: 200px;
+  padding: 1rem 1.5rem;
+  border: none;
+  border-radius: $bdr-radius-default;
+  outline: none;
+  font-weight: bold;
+  background: $blue;
+  color: white;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+  &:hover {
+    background: darken($blue, 8%);
+  }
+  &:disabled {
+    background: $bdr-gray;
+
+    &:hover{
+      background:darken($bdr-gray, 5%);
+    }
+  }
+  &--next {
+  }
+}

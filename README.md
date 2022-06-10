@@ -1,70 +1,110 @@
-# Getting Started with Create React App
+# **Indeed Demo Application**
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+---
 
-## Available Scripts
+### **Table Of Contents**
 
-In the project directory, you can run:
+- [App Config](#config)
+  - [App Install](#install)
+  - [Local App](#local)
+- [Build Considerations](#build)
+  - [Engineering](#engineering)
+    - [JS Build](#jsbuild)
+    - [Why Sass](#sass)
+  - [UX](#ux)
+- [Refactor](#time)
+- [QA](#qa)
+- [Dependencies](#dependencies)
 
-### `npm start`
+## ⚙ Application Config <a name="config"></a>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### **Install Dependencies** <a name="install"></a>
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+To get started, in the same root directory as the `package.json` file run the npm command below in the command line or terminal to install the project dependencies.
 
-### `npm test`
+```
+  npm install
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Please make sure you have the latest [`node.js`](https://nodejs.org/en/) installed on your system.
 
-### `npm run build`
+### **View App Locally** <a name="local"></a>
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+This application was developed use `create-react-app`. You can view the application locally by running the command below in the projects root folder.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```
+npm run start
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 💭 Build Considerations <a name="build"></a>
 
-### `npm run eject`
+### 🧪 **Engineering** <a name="engineering"></a>
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+**_Why a functional approach & static build?_** <a name="jsbuild"></a>
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Truthfully, while I considered using `next.js` or additional react libraries to build this application. I decided against more complex frameworks/dependencies because I wanted to build a bare bones prototype that would accurately reflect my approach and thought process regarding this sort of application without significant usage of dependencies.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+While there were some concerns regarding the potential size for the necessary javascript for this application, I thought a functional approach would allow for a centralized source of logic, making review easier and the application functionality more explicit than splitting logic into separate components.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+**_Why Sass?_** <a name="sass"></a>
 
-## Learn More
+I decided to use `scss` for styling and implemented a `bem/atomic` css style approach to break styles into smaller `scss` modules that would be easier to find and review.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Using `scss` also allowed for easy `scss` to `css` compiling for file compression and realtime file watching.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Each major markup element `quiz, question, answer` has a namespaced `.scss` file that contains it's related styles.
 
-### Code Splitting
+The `scss` architecture is organized into 5 primary groups:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- `/abstracts`: Non-rendered elements (variables,mixins,etc)
+- `/base`: Browser resets and default custom style declarations.
+- `/comp`: Element specific modules (header,footer, etc).
+- `/layouts`: Layout/Page specific modules (page level overrides)
+- `/utils`: General style utility classes,animations,override settings.
 
-### Analyzing the Bundle Size
+The `app.scss` file imports the `__index.scss` file located in each group directory which in turn imports the necessary `.scss` files contained in each shared folder.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+The `scss` compiler can be run from the command line or terminal with the script below:
 
-### Making a Progressive Web App
+```
+npm run sass
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+- `scss source directory` = `./src/assets/sass/`
+- `css output directory` = `./src/assets/css/`
 
-### Advanced Configuration
+### 🎨 User Experience <a name="ux"></a>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+The UI/UX considerations occupied two spaces while building this application.
 
-### Deployment
+1. Build a high fidelity prototype that closely matches the provided application mockup assets.
+2. Add appropriate interaction cues and accents that would feel natural within the application context.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+I wanted to ensure that the general styles would appropriately and responsively render on modern devices and match the provided mockups.
 
-### `npm run build` fails to minify
+Additional interaction and animation accents were added to the quiz button and radio inputs.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## ⏲ Refactor <a name="time"></a>
+
+Given more time I would address the items listed below:
+
+- Breakdown additional smaller componenets (i.e - buttons, header, etc
+- Update and design alternative animation accents for form elements & quiz completion
+- Add react router
+- Add routes & data persistence functionality for quiz questions and completion history
+- Add a loader animation element
+
+## 🔎 QA Review <a name="qa"></a>
+
+General application functionality on the browsers listed below will provide the intended application experience.
+
+| Browser | Version     |
+| ------- | ----------- |
+| Chrome  | 90 - Latest |
+| Safari  | 13 - Latest |
+| Firefox | 98 - Latest |
+
+## 📕 Dependencies <a name="dependencies"></a>
+
+- [Prettier](https://www.npmjs.com/package/prettier)
+- [Sass](https://www.npmjs.com/package/sass)

@@ -1,0 +1,52 @@
+.answer {
+  &--container {
+    display: grid;
+    grid-template-columns: repeat(2, 350px);
+    gap: 13px;
+    margin: 0 auto;
+  }
+  &--item {
+    position: relative;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+
+    > p {
+      margin: 0;
+    }
+
+    &:hover {
+      input[type="radio"] {
+        &:before {
+        }
+      }
+    }
+  }
+
+  &--alert {
+    margin-top: 1rem;
+    text-align: left;
+    font-weight: bold;
+
+    &.is-correct {
+      color: $green;
+    }
+    &.is-wrong {
+      color: $red;
+    }
+  }
+
+  @media #{$mobile} {
+    &--container {
+      grid-template-columns: repeat(1, 100%);
+      gap: 20px 0;
+      margin: 0;
+    }
+
+    &--item {
+    }
+  }
+}

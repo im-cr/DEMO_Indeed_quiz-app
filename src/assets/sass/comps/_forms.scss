@@ -1,0 +1,43 @@
+input[type="radio"] {
+  position: relative;
+  appearance: none;
+  display: grid;
+  place-content: center;
+  min-width: 24px;
+  width: 1.5rem;
+  height: 1.5rem;
+  margin: 0 10px 0 0;
+  padding: 2px;
+  border: solid 1px $bdr-gray;
+  border-radius: $bdr-circle;
+  font-family: inherit;
+  color: inherit;
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    border-width: 3px;
+  }
+
+  &:before {
+    content: "";
+    width: 10px;
+    height: 10px;
+    border-radius: $bdr-circle;
+  }
+
+  &:checked {
+    border-width: 3px;
+    &:before {
+      background: $blue;
+    }
+  }
+  &:disabled {
+    pointer-events: none;
+    opacity: 0.75;
+
+    &:hover{
+      border-width:1px;
+      border-color:$blue;
+    }
+  }
+}
